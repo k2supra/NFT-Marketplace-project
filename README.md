@@ -10,9 +10,8 @@ Functions:
 + marketplace
 + nft buy feature
 
-```
 ___
-```
+
 ### for developers
 To start the project run `npm run dev`
 check the `.env.example` file
