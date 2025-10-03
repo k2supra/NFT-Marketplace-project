@@ -1,0 +1,185 @@
+@import url(../../../../mainStyles/colors.css);
+@import url(../../../../mainStyles/fonts.css);
+
+.artistPage .artistInfoSection .editProfileMW
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 80px 30px 80px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'WorkSans';
+    align-items: center;
+    z-index: 1000;
+}
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--secondary-background);
+    padding: 15px;
+    border-radius: 20px;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent button.close
+{
+    background-color: var(--secondary-background);
+    border: 2px solid var(--callToAction);
+    padding: 8px 15px;
+    position: relative;
+    color: white;
+    border-radius: 20px;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent label
+{
+    text-align: start;
+    color: var(--captionAndLabelText);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent form
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent .bannerCollection
+{
+    grid-template-columns: repeat(auto-fit, 250px);
+    display: grid;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+}
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent .bannerCollection img.banner
+{
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    cursor: pointer;
+    &.selected
+    {
+        border: 2px solid var(--callToAction);
+    }
+}
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent .avatarCollection
+{
+    grid-template-columns: repeat(auto-fit, 70px);
+    display: grid;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+}
+
+
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent .avatarCollection img.avatar
+{
+    width: 70px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    cursor: pointer;
+    &.selected
+    {
+        border: 2px solid var(--callToAction);
+    }
+}
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent form input
+{
+    width: 100%;
+    height: 46px;
+    padding: 16px 20px;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid var(--callToAction);
+    color: white;
+    position: relative;
+    background-color: var(--secondary-background);
+}
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent form textarea
+{
+    width: 100% !important;
+    height: 100px;
+    padding: 16px 20px;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid var(--callToAction);
+    color: white;
+    position: relative;
+    background-color: var(--secondary-background);
+}
+.artistPage .artistInfoSection .editProfileMW .editProfileMWContent form button
+{
+    background-color: var(--callToAction);
+    border: 0;
+    border-radius: 20px;
+    height: 46px;
+    width: 100%;
+    color: white;
+    line-height: 140%;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 50px;
+}
+
+@media (min-width:750px)
+{
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent
+    {
+        width: 80%;
+        padding: 30px;
+    }
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent .bannerCollection
+    {
+        grid-template-columns: repeat(auto-fit, 300px);
+    }
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent .bannerCollection img.banner
+    {
+        width: 100%;
+        height: 80px;
+    }
+}
+@media (min-width:1280px)
+{
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent
+    {
+        width: 70%;
+        padding: 45px;
+    }
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent form button
+    {
+        width: 300px;
+    }
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent .bannerCollection
+    {
+        grid-template-columns: repeat(auto-fit, 350px);
+    }
+    .artistPage .artistInfoSection .editProfileMW .editProfileMWContent .bannerCollection img.banner
+    {
+        width: 100%;
+        height: 100px;
+    }
+}

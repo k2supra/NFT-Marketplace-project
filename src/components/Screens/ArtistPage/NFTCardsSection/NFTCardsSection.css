@@ -1,0 +1,180 @@
+@import url(../../../mainStyles/colors.css);
+@import url(../../../mainStyles/fonts.css);
+
+.artistPage .NFTCardSection
+{
+    padding: 80px 30px;
+    color: white;
+    background-color: var(--secondary-background);
+    border-bottom: 2px solid var(--background);
+}
+
+.artistPage .NFTCardSection .frames
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 315px);
+    justify-content: space-evenly;
+    /* flex-direction: column;
+    align-items: center; */
+    gap: 20px;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--background);
+    overflow: hidden;
+    width: 100%;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard img.NFTImage
+{
+    height: 238px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 20px 25px;
+    height: -webkit-fill-available;
+    justify-content: space-between;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .artistInfo
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .artistInfo h5.NFTName
+{
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: 600;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .artistInfo .artist
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .artistInfo .artist img
+{
+    width: 24px;
+    height: 24px;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .artistInfo .artist span.name
+{
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .additionalInfo
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .additionalInfo .price, .highestBid
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .additionalInfo .highestBid
+{
+    align-items: flex-end;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .additionalInfo .price span, .highestBid span
+{
+    color: white;
+    font-family: 'SpaceMono';
+    font-size: 12px;
+    line-height: 110%;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard .NFTInfo .additionalInfo .price span:nth-of-type(1), .highestBid span:nth-of-type(1)
+{
+    color: var(--captionAndLabelText);
+    font-size: 12px;
+    line-height: 110%;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard.forTabletAndDesktop
+{
+    display: none;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard.addNewCard
+{
+    width: 315px;
+    height: 402px;
+    justify-content: center;
+    order: -1;
+}
+
+.artistPage .NFTCardSection .frames .NFTCard.addNewCard .symbol
+{
+    font-size: 58px;
+    width: 50%;
+    aspect-ratio: 1;
+    align-content: center;
+    text-align: center;
+    border: 4px solid var(--captionAndLabelText);
+    color: var(--captionAndLabelText);
+    border-radius: 50%;
+    border-style: dashed;
+}
+
+@media (min-width: 750px)
+{
+    .artistPage .NFTCardSection
+    {
+        padding: 80px 72px;
+    }
+    
+    .artistPage .NFTCardSection .frames
+    {
+        grid-template-columns: repeat(auto-fit, 355px);
+    }
+    .artistPage .NFTCardSection .frames .NFTCard.forTabletAndDesktop
+    {
+        display: flex;
+    }
+    .artistPage .NFTCardSection .frames .NFTCard img.NFTImage
+    {
+        width: 100%;
+        height: 295px;
+        object-fit: cover;
+    }
+}
+@media (min-width: 1280px)
+{
+    .artistPage .NFTCardSection
+    {
+        padding: 80px 115px;
+    }
+    .artistPage .NFTCardSection .frames
+    {
+        grid-template-columns: repeat(auto-fit, 385px);
+    }
+}

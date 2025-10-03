@@ -1,0 +1,216 @@
+@import url(../../../mainStyles/colors.css);
+@import url(../../../mainStyles/fonts.css);
+
+.home .discoverMoreNFTS
+{
+    padding: 40px 30px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    color: white;
+    font-family: 'WorkSans';
+}
+
+.home .discoverMoreNFTS .headline
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.home .discoverMoreNFTS .headline h4
+{
+    font-size: 28px;
+    line-height: 140%;
+    font-weight: 600;
+}
+
+.home .discoverMoreNFTS .headline span
+{
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.home .discoverMoreNFTS .frames
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--secondary-background);
+    overflow: hidden;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard img.NFTImage
+{
+    height: 238px;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 20px 25px;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .artistInfo
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .artistInfo h5.NFTName
+{
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: 600;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .artistInfo .artist
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .artistInfo .artist img
+{
+    width: 24px;
+    height: 24px;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .artistInfo .artist span.name
+{
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .additionalInfo
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .additionalInfo .price, .highestBid
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .additionalInfo .highestBid
+{
+    align-items: flex-end;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .additionalInfo .price span, .highestBid span
+{
+    color: white;
+    font-family: 'SpaceMono';
+    font-size: 12px;
+    line-height: 110%;
+}
+
+.home .discoverMoreNFTS .frames .NFTCard .NFTInfo .additionalInfo .price span:nth-of-type(1), .highestBid span:nth-of-type(1)
+{
+    color: var(--captionAndLabelText);
+    font-size: 12px;
+    line-height: 110%;
+}
+
+.home .discoverMoreNFTS button
+{
+    border: 2px solid var(--callToAction);
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    height: 60px;
+    padding: 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 20px;
+}
+
+.home .discoverMoreNFTS .forMobile
+{
+    display: flex !important;
+}
+
+@media (min-width: 750px)
+{
+    .home .discoverMoreNFTS
+    {
+        padding: 40px 72px 60px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .home .discoverMoreNFTS .headline
+    {
+        width: 50%;
+        text-align: start;
+        order: -2;
+    }
+    .home .discoverMoreNFTS .frames
+    {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .home .discoverMoreNFTS .frames .NFTCard
+    {
+        width: auto;
+    }
+    .home .discoverMoreNFTS button
+    {
+        width: max-content;
+        order: -1;
+    }
+    .home .discoverMoreNFTS .forMobile
+    {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1280px)
+{
+    .home .discoverMoreNFTS
+    {
+        padding: 80px 115px;
+    }
+    .home .discoverMoreNFTS .headline h4
+    {
+        font-size: 38px;
+        line-height: 120%;
+    }
+    .home .discoverMoreNFTS .headline span
+    {
+        font-size: 22px;
+        line-height: 160%;
+    }
+    .home .discoverMoreNFTS .forMobile
+    {
+        display: flex !important;
+    }
+}

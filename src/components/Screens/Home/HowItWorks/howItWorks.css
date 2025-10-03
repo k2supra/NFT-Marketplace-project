@@ -1,0 +1,148 @@
+@import url(../../../mainStyles/colors.css);
+@import url(../../../mainStyles/fonts.css);
+
+
+.home .howItWorks
+{
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    font-family: 'WorkSans';
+    color: white;
+}
+
+.home .howItWorks .headline
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.home .howItWorks .headline h4
+{
+    font-size: 28px;
+    line-height: 140%;
+    font-weight: 600;
+}
+
+.home .howItWorks .headline span
+{
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.home .howItWorks .cards
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.home .howItWorks .cards .infoCard
+{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-background);
+}
+
+.home .howItWorks .cards .infoCard img
+{
+    width: 100px;
+    height: 100px;
+}
+
+.home .howItWorks .cards .infoCard .cardDetails
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.home .howItWorks .cards .infoCard .cardDetails span
+{
+    max-width: 155px;
+}
+.home .howItWorks .cards .infoCard .cardDetails span:nth-of-type(1)
+{
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 600;
+}
+.home .howItWorks .cards .infoCard .cardDetails span:nth-of-type(2)
+{
+    font-size: 12px;
+    line-height: 140%;
+    text-align: start;
+}
+
+@media (min-width:750px)
+{
+    .home .howItWorks
+    {
+        padding: 40px 72px;
+    }
+    .home .howItWorks .cards
+    {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .home .howItWorks .cards .infoCard
+    {
+        flex-direction: column;
+        height: -webkit-fill-available;
+    }
+    .home .howItWorks .cards .infoCard img
+    {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-width:1280px)
+{
+    .home .howItWorks
+    {
+        padding: 80px 115px;
+    }
+    .home .howItWorks .headline h4
+    {
+        font-size: 38px;
+        line-height: 120%;
+    }
+    .home .howItWorks .headline span
+    {
+        font-size: 22px;
+        line-height: 160%;
+    }
+    .home .howItWorks .cards .infoCard
+    {
+        width: -webkit-fill-available;
+    }
+    .home .howItWorks .cards .infoCard .cardDetails
+    {
+        width: 100%;
+        align-items: center;
+    }
+    .home .howItWorks .cards .infoCard .cardDetails span
+    {
+        max-width: 100%;
+    }
+    .home .howItWorks .cards .infoCard .cardDetails span:nth-of-type(1)
+    {
+        font-size: 22px;
+    }
+    .home .howItWorks .cards .infoCard .cardDetails span:nth-of-type(2)
+    {
+        font-size: 16px;
+        text-align: center;
+    }
+}

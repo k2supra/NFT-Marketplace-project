@@ -1,0 +1,215 @@
+@import url(../../../mainStyles/colors.css);
+@import url(../../../mainStyles/fonts.css);
+
+.marketplace .heading
+{
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    color: white;
+    font-family: 'WorkSans';
+    border-bottom: 1px solid var(--secondary-background);
+    position: relative;
+}
+
+.marketplace .heading .headingData
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: start;
+}
+
+.marketplace .heading .headingData h4
+{
+    font-size: 28px;
+    line-height: 140%;
+    font-weight: 600;
+    width: 100%;
+}
+
+.marketplace .heading .headingData span
+{
+    font-size: 16px;
+    line-height: 140%;
+    width: 100%;
+}
+
+.marketplace .heading .inputWrapper
+{
+    width: fit-content;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.marketplace .heading .inputWrapper input
+{
+    padding: 12px 110px 12px 20px;
+    width: 315px;
+    height: 60px;
+    border: 1px solid var(--secondary-background);
+    border-radius: 20px;
+    background-color: var(--background);
+    color: white;
+    font-size: 16px;
+    line-height: 140%;
+    &::placeholder
+    {
+        color: var(--captionAndLabelText);
+    }
+}
+
+.marketplace .heading .inputWrapper img
+{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    user-select: none;
+    pointer-events: none;
+    right: 12px;
+    top: 18px;
+}
+
+.marketplace .heading .inputWrapper select
+{
+    position: absolute;
+    width: 60px;
+    font-size: 16px;
+    line-height: 140%;
+    height: -webkit-fill-available;
+    text-align: center;
+    background-color: var(--background);
+    color: white;
+    border: 1px solid var(--secondary-background);
+    border-width: 1px;
+    right: 42px;
+}
+
+.marketplace .heading .foundSection
+{
+    position: absolute;
+    background-color: var(--secondary-background);
+    height: 70px;
+    width: 315px;
+    padding: 12px;
+    bottom: -30px;
+    border-radius: 0 0 12px 12px;
+    align-content: center;
+}
+
+.marketplace .heading .foundSection h3.notFound
+{
+    color: var(--captionAndLabelText);
+}
+
+.marketplace .heading .foundSection .artistInfo
+{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+    height: 100%;
+    cursor: pointer;
+}
+.marketplace .heading .foundSection img
+{
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+.marketplace .heading .foundSection .usernameAndID
+{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    justify-content: space-around;
+    height: 100%;
+}
+.marketplace .heading .foundSection .usernameAndID span.username
+{
+    font-size: 16px;
+}
+.marketplace .heading .foundSection .usernameAndID span.id
+{
+    font-size: 12px;
+    color: var(--captionAndLabelText);
+}
+
+.marketplace .heading .mockIDs
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.marketplace .heading .mockIDs button.mockUserID
+{
+    height: 46px;
+    width: fit-content;
+    border-radius: 20px;
+    border: 2px solid var(--callToAction);
+    background-color: var(--secondary-background);
+    color: white;
+    font-size: 16px;
+    padding: 0 30px;
+}
+
+@media (min-width: 750px)
+{
+    .marketplace .heading
+    {
+        padding: 60px 77px;
+    }
+    .marketplace .heading .headingData h4
+    {
+        font-size: 38px;
+        line-height: 120%;
+    }
+    .marketplace .heading .headingData span
+    {
+        font-size: 16px;
+        line-height: 140%;
+    }
+    .marketplace .heading .inputWrapper input
+    {
+        width: 650px;
+        padding: 18px 20px;
+    }
+    .marketplace .heading .foundSection
+    {
+        width: 650px;
+        bottom: -10px;
+    }
+}
+
+@media (min-width: 1280px)
+{
+    .marketplace .heading
+    {
+        padding: 80px 115px;
+    }
+    .marketplace .heading .headingData h4
+    {
+        font-size: 51px;
+        line-height: 110%;
+    }
+    .marketplace .heading .headingData span
+    {
+        font-size: 22px;
+        line-height: 160%;
+    }
+    .marketplace .heading .inputWrapper input
+    {
+        width: 1050px;
+    }
+    .marketplace .heading .foundSection
+    {
+        width: 1050px;
+        bottom: 10px;
+    }
+}

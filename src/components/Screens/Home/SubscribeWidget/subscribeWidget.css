@@ -1,0 +1,175 @@
+@import url(../../../mainStyles/colors.css);
+@import url(../../../mainStyles/fonts.css);
+
+.home .subscribeWidget
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 30px;
+    color: white;
+    font-family: 'WorkSans';
+}
+
+.home .subscribeWidget .frame
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.home .subscribeWidget img.astronaut
+{
+    border-radius: 20px;
+    height: 255px;
+}
+
+.home .subscribeWidget .data
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.home .subscribeWidget .data .headline
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.home .subscribeWidget .data .headline h4
+{
+    font-size: 28px;
+    line-height: 140%;
+    font-weight: 600;
+    text-align: start;
+}
+
+.home .subscribeWidget .data .headline span
+{
+    font-size: 16px;
+    line-height: 140%;
+    text-align: start;
+}
+
+.home .subscribeWidget .data .inputAndButton
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.home .subscribeWidget .data .inputAndButton input
+{
+    width: 100%;
+    background-color: white;
+    border: 1px solid var(--secondary-background);
+    border-radius: 20px;
+    padding: 16px 20px;
+    height: 46px;
+}
+.home .subscribeWidget .data .inputAndButton input::placeholder
+{
+    color: var(--background);
+    line-height: 140%;
+    font-size: 16px;
+}
+.home .subscribeWidget .data .inputAndButton button
+{
+    background-color: var(--callToAction);
+    border: 0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 46px;
+    width: 100%;
+    color: white;
+    line-height: 140%;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 50px;
+}
+
+.home .subscribeWidget .data .inputAndButton button img
+{
+    width: 20px;
+    height: 20px;
+}
+
+
+@media (min-width:750px)
+{
+    .home .subscribeWidget
+    {
+        padding: 40px 72px;
+        
+    }
+    .home .subscribeWidget .frame
+    {
+        flex-direction: row;
+        background-color: var(--secondary-background);
+        padding: 30px;
+        border-radius: 20px;
+        width: 100%;
+    }
+}
+
+@media (min-width:1280px)
+{
+    .home .subscribeWidget
+    {
+        padding: 40px 115px 80px;
+        
+    }
+    .home .subscribeWidget .frame
+    {
+        padding: 60px;
+        width: 100%;
+        gap: 80px;
+    }
+    .home .subscribeWidget img.astronaut
+    {
+        height: 310px;
+        width: -webkit-fill-available;
+        object-fit: cover;
+    }
+    .home .subscribeWidget .data .headline
+    {
+        width: 425px;
+    }
+    .home .subscribeWidget .data .headline h4
+    {
+        font-size: 38px;
+        line-height: 120%;
+    }
+    .home .subscribeWidget .data .headline span
+    {
+        font-size: 22px;
+        line-height: 160%;
+    }
+    .home .subscribeWidget .data .inputAndButton
+    {
+        flex-direction: row;
+        gap: 0;
+        background-color: white;
+        border-radius: 20px;
+    }
+    .home .subscribeWidget .data .inputAndButton input
+    {
+        border: 0;
+        height: 60px;
+    }
+    .home .subscribeWidget .data .inputAndButton button
+    {
+        height: 60px;
+        width: fit-content;
+    }
+}
