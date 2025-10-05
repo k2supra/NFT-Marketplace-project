@@ -11,6 +11,7 @@ const nfts = [nft1, nft2, nft3, nft4, nft5]
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
+const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
 function AddCardMW({close, userId, onNFTAdded}) {
     const [title, setTitle] = useState('');
@@ -37,7 +38,7 @@ function AddCardMW({close, userId, onNFTAdded}) {
             }
     
             try {                
-                const res = await fetch(`${API_URL}:${PORT}/artist-page/${userId}/nfts`,
+                const res = await fetch(`${RENDER_URL}/artist-page/${userId}/nfts`,
                     {
                         method: 'POST',
                         headers:{'Content-Type':'application/json'},

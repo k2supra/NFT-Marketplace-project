@@ -18,6 +18,7 @@ const banner2 = process.env.PUBLIC_URL + '/images/banner2.png'
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
+const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
 const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8, avatar9, avatar10, avatar11];
 const banners = [banner1, banner2]
@@ -47,7 +48,7 @@ function EditProfileMW({close, userData, onUpdatedUser}) {
             }
     
             try {                
-                const res = await fetch(`${API_URL}:${PORT}/artist-page/${userData?._id}/update`,
+                const res = await fetch(`${RENDER_URL}/artist-page/${userData?._id}/update`,
                     {
                         method: 'POST',
                         headers:{'Content-Type':'application/json'},

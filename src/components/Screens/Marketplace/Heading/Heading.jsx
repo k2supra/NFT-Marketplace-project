@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
+const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
 const usersIDArray = 
 [
@@ -44,7 +45,7 @@ function Heading() {
         (async () =>
         {
             try {
-                const res = await fetch(`${API_URL}:${PORT}/find-user-by-id/${inputIdValue}`)
+                const res = await fetch(`${RENDER_URL}/find-user-by-id/${inputIdValue}`)
     
                 if(!res.ok) throw new Error ({error: 'Error while finding user by id'})
                 

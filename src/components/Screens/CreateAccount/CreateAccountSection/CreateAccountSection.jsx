@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
+const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
 const validate = values =>
 {
@@ -50,7 +51,7 @@ function CreateAccountSection() {
         onSubmit: async (values, {setSubmitting, setErrors}) => 
         {
             try {
-                const res = await fetch(`${API_URL}:${PORT}/register`, {
+                const res = await fetch(`${RENDER_URL}/register`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({username: values.username, email: values.email, password: values.password})

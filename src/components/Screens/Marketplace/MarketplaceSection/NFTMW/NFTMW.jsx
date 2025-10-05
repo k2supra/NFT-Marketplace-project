@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
+const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
 function NFTMW({nftData, close, marketplace}) {
     const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function NFTMW({nftData, close, marketplace}) {
                     {
                         try {
                             console.log("start fetch...");
-                            const res = await fetch(`${API_URL}:${PORT}/buy/${marketplace._id}/${currentUser._id}/${nftData._id}`, {
+                            const res = await fetch(`${RENDER_URL}/buy/${marketplace._id}/${currentUser._id}/${nftData._id}`, {
                                 method: 'POST',
                                 headers: {'Content-Type': 'application/json'},
                             })

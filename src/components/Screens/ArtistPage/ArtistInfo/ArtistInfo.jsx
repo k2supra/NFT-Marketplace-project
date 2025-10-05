@@ -17,6 +17,7 @@ import EditProfileMW from './EditProfileMW/EditProfileMW'
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
+const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
 function ArtistInfo({userData, loading, error}) {
     const dispatch = useDispatch()
@@ -45,7 +46,7 @@ function ArtistInfo({userData, loading, error}) {
     const handleFollow = async () =>
     {
         try {
-            const res = await fetch(`${API_URL}:${PORT}/artist-page/${userData?._id}/followedBy/${currentUser?._id}`,
+            const res = await fetch(`${RENDER_URL}/artist-page/${userData?._id}/followedBy/${currentUser?._id}`,
                 {
                     method: 'POST',
                     headers:{'Content-Type':'application/json'},
@@ -61,7 +62,7 @@ function ArtistInfo({userData, loading, error}) {
     const handleUnfollow = async () =>
     {
         try {
-            const res = await fetch(`${API_URL}:${PORT}/artist-page/${userData?._id}/unfollow/${currentUser?._id}`,
+            const res = await fetch(`${RENDER_URL}/artist-page/${userData?._id}/unfollow/${currentUser?._id}`,
                 {
                     method: 'POST',
                     headers:{'Content-Type':'application/json'},
