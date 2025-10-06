@@ -31,8 +31,6 @@ function ArtistPage() {
         }
     }, [dispatch])
     const userData = mockUser || fullUser
-
-
     return <div className="artistPage">
         <BannerAndProfilePicture userData={userData}/>
         <ArtistInfo userData={userData} loading={loading} error={error}/>

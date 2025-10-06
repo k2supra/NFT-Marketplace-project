@@ -14,8 +14,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, 315px);
     justify-content: space-evenly;
-    /* flex-direction: column;
-    align-items: center; */
+    justify-items: center;
     gap: 20px;
 }
 
@@ -130,6 +129,7 @@
     height: 402px;
     justify-content: center;
     order: -1;
+    cursor: pointer;
 }
 
 .artistPage .NFTCardSection .frames .NFTCard.addNewCard .symbol

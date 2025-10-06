@@ -14,6 +14,7 @@ export const userSlice = createSlice(
             marketplace: null,
             loading: false,
             error: null,
+            showPopUp: false,
         },
         reducers:
         {
@@ -41,6 +42,14 @@ export const userSlice = createSlice(
             setBalance:(state, action)=>
             {
                 state.balance = action.payload.balance
+            },
+            openPopUp:(state)=>
+            {
+                state.showPopUp = true;
+            },
+            closePopUp:(state)=>
+            {
+                state.showPopUp = false;
             },
         },
         extraReducers:(builder)=>
@@ -88,10 +97,11 @@ export const userSlice = createSlice(
             .addCase(fetchMarketplaceForSale.fulfilled, (state, action)=>
             {
                 state.marketplace = action.payload;
+                state.loading = false;
             })
         }
     }
 )
 
-export const {setUser, logout, updateNFTS, updateUser, setBalance} = userSlice.actions;
+export const {setUser, logout, updateNFTS, updateUser, setBalance, openPopUp, closePopUp} = userSlice.actions;
 export default userSlice.reducer

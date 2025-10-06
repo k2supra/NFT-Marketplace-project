@@ -1,0 +1,69 @@
+@import url(../../mainStyles/colors.css);
+@import url(../../mainStyles/fonts.css);
+
+.popUpWindow
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'WorkSans';
+    color: white;
+}
+
+.popUpWindow .popUpContent
+{
+    background-color: var(--secondary-background);
+    width: 315px;
+    height: fit-content;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.popUpWindow .popUpContent h3
+{
+    line-height: 140%;
+    font-size: 32px;
+}
+.popUpWindow .popUpContent span
+{
+    line-height: 140%;
+    font-size: 14px;
+}
+
+.popUpWindow .popUpContent .buttons
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.popUpWindow .popUpContent .buttons button
+{
+    width: 120px;
+    height: 46px;
+    border-radius: 20px;
+}
+
+.popUpWindow .popUpContent .buttons button.cancel
+{
+    border: 2px solid var(--callToAction);
+    background: var(--secondary-background);
+    color: white;
+}
+.popUpWindow .popUpContent .buttons button.ok
+{
+    border: 2px solid var(--callToAction);
+    background: var(--callToAction);
+    color: white;
+}

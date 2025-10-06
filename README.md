@@ -13,5 +13,5 @@ Functions:
 ___
 
 ### for developers
-To start the project run `npm run dev`
+To start the project run `npm start`
 check the `.env.example` file

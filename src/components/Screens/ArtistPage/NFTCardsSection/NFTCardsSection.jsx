@@ -19,7 +19,7 @@ function NFTCardsSection({userData, activeTab}) {
 
     return <div className="NFTCardSection">
         <div className="frames">
-            {nftsData.length === 0 ? <h1>No NFTs {activeTab}</h1> : nftsData.map((nft, index)=>
+            {nftsData.length === 0 ? <h1>No NFTs {activeTab}</h1> : [...nftsData].reverse().map((nft, index)=>
             <div className="NFTCard" key={index}>
                 <img src={nft.imageUrl} alt="NFT" className='NFTImage'/>
                 <div className="NFTInfo">

@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  transition: all 0.3s ease;
 }
 
 body
@@ -16,6 +17,9 @@ body
 .App {
   text-align: center;
   background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -61,4 +65,8 @@ a
 button
 {
   cursor: pointer;
+  &:hover
+  {
+    scale: 1.05;
+  }
 }

@@ -13,6 +13,7 @@ import ConnectWallet from './components/Screens/ConnectWallet';
 import LoginAccount from './components/Screens/LoginAccount';
 import FollowersPage from './components/Screens/ArtistPage/FollowersPages/FollowersPage';
 import FollowingsPage from './components/Screens/ArtistPage/FollowersPages/FollowingsPage';
+import NotFound from './components/Screens/NotFound/NotFound';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='/login' element={<LoginAccount/>}/>
             <Route path='/artist-page/:id/followers' element={<FollowersPage/>}/>
             <Route path='/artist-page/:id/followings' element={<FollowingsPage/>}/>
+            <Route path='*' element={<NotFound/>}/>
           </Route>
         </Routes>
       </div>
