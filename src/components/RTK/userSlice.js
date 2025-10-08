@@ -16,6 +16,7 @@ export const userSlice = createSlice(
             error: null,
             showPopUp: false,
             smallLoading: false, //for sidebar
+            popUpContent: null,
         },
         reducers:
         {
@@ -56,6 +57,10 @@ export const userSlice = createSlice(
             resetError: (state) => 
             {
                 state.error = null;
+            },
+            setPopUpContent:(state, action)=>
+            {
+                state.popUpContent = action.payload;
             }
         },
         extraReducers:(builder)=>
@@ -110,5 +115,5 @@ export const userSlice = createSlice(
     }
 )
 
-export const {setUser, logout, updateNFTS, updateUser, setBalance, openPopUp, closePopUp, resetError } = userSlice.actions;
+export const {setUser, logout, updateNFTS, updateUser, setBalance, openPopUp, closePopUp, resetError, setPopUpContent } = userSlice.actions;
 export default userSlice.reducer

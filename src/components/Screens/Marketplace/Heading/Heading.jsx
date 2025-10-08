@@ -4,6 +4,8 @@ import './heading.css'
 import searchIcon from '../../../../assets/images/searchIcon.png'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import NFTMW from '../MarketplaceSection/NFTMW/NFTMW';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
@@ -21,8 +23,14 @@ function Heading() {
     const [selectOption, setSelectOption] = useState('user');
     const [debounce, setDebounce] = useState('');
     const [foundUser, setFoundUser] = useState(null);
+    const [foundNft, setFoundNft] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
+
+    const marketplace = useSelector(state => state.user.marketplace)
+
+    const [showNFTMW, setShowNFTMW] = useState(false);
+    const [nftData, setNftData] = useState(null);
     
     useEffect(()=>
     {
@@ -37,26 +45,34 @@ function Heading() {
     {
         if (!debounce) {
             setFoundUser(null);
+            setFoundNft(null);
             return;
         }
+
         setLoading(true);
 
-        
-        (async () =>
-        {
-            try {
-                const res = await fetch(`${RENDER_URL}/find-user-by-id/${inputIdValue}`)
-    
-                if(!res.ok) throw new Error ({error: 'Error while finding user by id'})
-                
-                const data = await res.json();
-    
-                setFoundUser(data)
-                setLoading(false)
-            } catch (err) {
-                console.error(err);
-            }
-        })()
+        if (selectOption === 'user') {
+            (async () => {
+                try {
+                    const res = await fetch(`${RENDER_URL}/find-user-by-id/${inputIdValue}`);
+                    if (!res.ok) throw new Error('Error while finding user by id');
+
+                    const data = await res.json();
+                    setFoundUser(data);
+                } catch (err) {
+                    console.error(err);
+                    setFoundUser(null);
+                } finally {
+                    setLoading(false);
+                }
+            })();
+        } else {
+            const reqNft = marketplace?.nfts?.created?.find(
+                nft => nft?._id?.toString() === inputIdValue
+            );
+            setFoundNft(reqNft || null);
+            setLoading(false);
+        }
     }, [debounce])
 
     return <div className="heading">
@@ -76,22 +92,54 @@ function Heading() {
             </select>
             <img src={searchIcon} alt="search" className='search'/>
             {inputIdValue && (
-                !loading && foundUser ? (
-                    <div className='foundSection'>
-                        <div className="artistInfo" onClick={() => navigate(`/artist-page/${foundUser._id}`)}>
-                            <img src={foundUser?.avatarUrl} alt="avatar" />
-                            <div className="usernameAndID">
-                                <span className='username'>{foundUser.username}</span>
-                                <span className='id'>{foundUser._id}</span>
+                !loading ? (
+                    selectOption === 'user' ? (
+                        foundUser ? (
+                            <div className="foundSection">
+                                <div
+                                    className="artistInfo"
+                                    onClick={() => navigate(`/artist-page/${foundUser._id}`)}
+                                >
+                                    <img src={foundUser?.avatarUrl} alt="avatar" />
+                                    <div className="usernameAndID">
+                                        <span className="username">{foundUser.username}</span>
+                                        <span className="id">{foundUser._id}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                ) : (
-                    (
-                    <div className='foundSection'>
-                        <h3 className='notFound'>No user found :⟮</h3>
-                    </div>
+                        ) : (
+                            <div className="foundSection">
+                                <h3 className="notFound">No user found :⟮</h3>
+                            </div>
+                        )
+                    ) : (
+                        foundNft ? (
+                            <div className="foundSection">
+                                <div
+                                    className="nftInfo"
+                                    onClick={()=>
+                                        {
+                                            setShowNFTMW(true);
+                                            setNftData({imageUrl: foundNft?.imageUrl, title: foundNft?.title, price: foundNft?.price, highestBid: foundNft?.highestBid, _id: foundNft?._id});                
+                                        }}
+                                >
+                                    <img src={foundNft?.imageUrl} alt="nft" />
+                                    <div className="nftNameAndId">
+                                        <span className="nftTitle">{foundNft.title}</span>
+                                        <span className="id">{foundNft._id}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="foundSection">
+                                <h3 className="notFound">No NFT found :⟮</h3>
+                            </div>
+                        )
                     )
+                ) : (
+                    <div className="foundSection">
+                        <h3 className="loading">Searching...</h3>
+                    </div>
                 )
             )}
         </div>
@@ -124,7 +172,13 @@ function Heading() {
             }}>{u.slice(0, 4)}...{u.slice(-3)}</button>
             )}
         </div>
-        
+        {showNFTMW && <NFTMW nftData={nftData} 
+        close={()=>
+        {
+            setShowNFTMW(false);
+            setNftData(null);
+        }} 
+        marketplace={marketplace}/>}
     </div>
 }
 

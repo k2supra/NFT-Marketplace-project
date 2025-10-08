@@ -13,6 +13,8 @@ function MarketplaceSection() {
 
     const [showNFTMW, setShowNFTMW] = useState(false);
     const [nftData, setNftData] = useState(null);
+    
+    const [activeTab, setActiveTab] = useState('nft');
 
     const dispatch = useDispatch()
 
@@ -25,15 +27,17 @@ function MarketplaceSection() {
 
     if(!marketplace) return <p>Loading...</p>
 
+    const marketplaceNftsOrCollections = activeTab === 'nft' ? marketplace.nfts.created : marketplace.nfts.collections;
+
     return <div className="marketplaceSection">
         <div className="tabs">
-            <input type="radio" id="nft" name="tabs" defaultChecked hidden />
+            <input type="radio" id="nft" name="tabs" checked={activeTab === 'nft'} onChange={()=>setActiveTab('nft')} hidden />
             <label htmlFor="nft" className="tab">NFT</label>
-            <input type="radio" id="collections" name="tabs" hidden />
+            <input type="radio" id="collections" name="tabs" checked={activeTab === 'collections'} onChange={()=>setActiveTab('collections')} hidden />
             <label htmlFor="collections" className="tab">Collections</label>
         </div>
         <div className="cardsSection">
-            {marketplace.nfts.created.length>0 ? marketplace.nfts.created.map((nft,index)=>
+            {marketplaceNftsOrCollections && marketplaceNftsOrCollections.length>0 ? marketplaceNftsOrCollections.map((nft,index)=>
             <div className="NFTCard" key={index} onClick={()=>
             {
                 setShowNFTMW(true);

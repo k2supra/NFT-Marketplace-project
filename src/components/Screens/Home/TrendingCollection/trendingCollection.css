@@ -109,6 +109,8 @@
 .home .trendingCollection .collectionSlider .collectionInfo .artistCard .avatar
 {
     border-radius: 50%;
+    width: 24px;
+    height: 24px;
 }
 
 .home .trendingCollection .collectionSlider .collectionInfo .artistCard span

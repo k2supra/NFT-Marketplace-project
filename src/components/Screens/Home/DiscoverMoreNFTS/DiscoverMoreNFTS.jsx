@@ -10,7 +10,16 @@ import avatar3 from '../../../../assets/images/avatar3.png'
 
 import eye from '../../../../assets/images/eye.png'
 
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+
+import { usersMock } from '../../../mocks/users'
+import { useEffect } from 'react'
+
 function DiscoverMoreNFTS() {
+    const navigate = useNavigate()
+    const marketplace = useSelector(state => state.user.marketplace)
+
     return <div className="discoverMoreNFTS">
         <div className="headline">
             <h4>Discover More NFTs</h4>
@@ -18,13 +27,13 @@ function DiscoverMoreNFTS() {
         </div>
         <div className="frames">
             <div className="NFTCard">
-                <img src={nft1} alt="NFT" className='NFTImage'/>
+                <img src={nft1} alt="NFT" className='NFTImage' onClick={()=>navigate(`/marketplace`)}/>
                 <div className="NFTInfo">
-                    <div className="artistInfo">
+                    <div className="artistInfo" onClick={()=>navigate(`/artist-page/${usersMock[3]._id.$oid}`)}>
                         <h5 className='NFTName'>Distant Galaxy</h5>
                         <div className="artist">
-                            <img src={avatar} alt="avatar" />
-                            <span className="name">MoonDancer</span>
+                            <img src={usersMock[3].avatarUrl} alt="avatar" />
+                            <span className="name">{usersMock[3].username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
@@ -40,13 +49,13 @@ function DiscoverMoreNFTS() {
                 </div>
             </div>
             <div className="NFTCard">
-                <img src={nft2} alt="NFT" className='NFTImage'/>
+                <img src={nft2} alt="NFT" className='NFTImage' onClick={()=>navigate(`/marketplace`)}/>
                 <div className="NFTInfo">
-                    <div className="artistInfo">
+                    <div className="artistInfo" onClick={()=>navigate(`/artist-page/68de6f88b19bde40d5fab4d1`)}>
                         <h5 className='NFTName'>Life on Edena</h5>
                         <div className="artist">
-                            <img src={avatar2} alt="avatar" />
-                            <span className="name">NebulaKid</span>
+                            <img src={marketplace?.avatarUrl} alt="avatar" />
+                            <span className="name">{marketplace?.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
@@ -62,13 +71,13 @@ function DiscoverMoreNFTS() {
                 </div>
             </div>
             <div className="NFTCard forMobile">
-                <img src={nft3} alt="NFT" className='NFTImage'/>
+                <img src={nft3} alt="NFT" className='NFTImage' onClick={()=>navigate(`/marketplace`)}/>
                 <div className="NFTInfo">
                     <div className="artistInfo">
                         <h5 className='NFTName'>AstroFiction</h5>
-                        <div className="artist">
-                            <img src={avatar3} alt="avatar" />
-                            <span className="name">Spaceone</span>
+                        <div className="artist" onClick={()=>navigate(`/artist-page/68de6f88b19bde40d5fab4d1`)}>
+                            <img src={marketplace?.avatarUrl} alt="avatar" />
+                            <span className="name">{marketplace?.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
@@ -84,7 +93,7 @@ function DiscoverMoreNFTS() {
                 </div>
             </div>
         </div>
-        <button><img src={eye} alt="see all" />See All</button>
+        <button onClick={()=>navigate(`/marketplace`)}><img src={eye} alt="see all" />See All</button>
     </div>
 }
 

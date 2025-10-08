@@ -19,7 +19,6 @@ function ArtistPage() {
     const location = useLocation();
     const { id } = useParams()
     const [activeTab, setActiveTab] = useState('created');
-    const navigate = useNavigate()
 
     const mockUser = location.state?.user;
     useEffect(()=>
@@ -41,7 +40,6 @@ function ArtistPage() {
         return <NotFound title={'User not found'} description={'You might have entered the wrong id'}/>
     }
     return <div className="artistPage">
-        {/* {error && !loading && <PopUp title={'nn'} description={'lll'} okText={'ll'} okAction={()=>{dispatch(closePopUp()); navigate('/'); dispatch(resetError())}}/>} */}
         <BannerAndProfilePicture userData={userData}/>
         <ArtistInfo userData={userData} loading={loading} error={error}/>
         <TabBar activeTab={activeTab} setActiveTab={setActiveTab}/>

@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: fit-content; */
+    cursor: pointer;
 }
 
 .home .browseCategories .categoryCardsGrid .categoryCard img

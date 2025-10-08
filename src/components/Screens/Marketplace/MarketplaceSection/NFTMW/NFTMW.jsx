@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBalance } from '../../../../RTK/fetchBalance';
 import { fetchMarketplaceForSale } from '../../../../RTK/fetchMarketplaceForSale';
 import { useNavigate } from 'react-router-dom';
+import { closePopUp, openPopUp, setPopUpContent } from '../../../../RTK/userSlice';
+import PopUp from '../../../PopUp/PopUp';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
@@ -20,12 +22,39 @@ function NFTMW({nftData, close, marketplace}) {
         return ()=>document.body.style.overflow='auto'
     },[])
     return <div className="nftmw">
+        <div className="content">
         <div className="NFTCard">
                 <img src={nftData?.imageUrl} alt="NFT" className='NFTImage'/>
                 <div className="NFTInfo">
-                    <div className="artistInfo" onClick={()=>navigate(`/artist-page/${marketplace?._id}`)}>
+                    <div className="artistInfo">
                         <h5 className='NFTName'>{nftData?.title}</h5>
-                        <div className="artist">
+                        <span className='nftId'
+                            onClick={async () => {
+                                const text = nftData?._id || "";
+                
+                                try {
+                                if (navigator.clipboard && window.isSecureContext) {
+                                    // Сучасний метод (працює в більшості браузерів, Android Chrome, нові Safari)
+                                    await navigator.clipboard.writeText(text);
+                                } else {
+                                    // Fallback для старих/мобільних браузерів
+                                    const textarea = document.createElement("textarea");
+                                    textarea.value = text;
+                                    textarea.style.position = "fixed"; // щоб не прокручувало
+                                    textarea.style.opacity = 0;
+                                    document.body.appendChild(textarea);
+                                    textarea.focus();
+                                    textarea.select();
+                
+                                    document.execCommand("copy");
+                                    document.body.removeChild(textarea);
+                                }
+                                } catch (err) {
+                                console.error("Помилка копіювання:", err);
+                                alert("Не вдалося скопіювати ❌");
+                                }
+                        }}>{nftData?._id.toString()}</span>
+                        <div className="artist" onClick={()=>navigate(`/artist-page/${marketplace?._id}`)}>
                             <img src={marketplace?.avatarUrl} alt="avatar" />
                             <span className="name">{marketplace.username}</span>
                         </div>
@@ -62,7 +91,21 @@ function NFTMW({nftData, close, marketplace}) {
                             console.log("got response:", res.status);
 
                             if (res.ok) {
-                                alert('Succesfully bought. Congratulations')
+                                dispatch(setPopUpContent({
+                                    title: 'Congratulation',
+                                    description: 'You have successfully bought an NFT',
+                                    cancelText: 'To profile',
+                                    okText: 'Continue shopping',
+                                    cancelAсtion: () => {
+                                        dispatch(closePopUp())
+                                        navigate(`/artist-page/${currentUser?._id}`)
+                                    },
+                                    okAction: () => {
+                                      dispatch(closePopUp());
+                                      dispatch(setPopUpContent(null));
+                                    }
+                                  }))
+                                dispatch(openPopUp())
                             }
                             else
                             {
@@ -79,10 +122,25 @@ function NFTMW({nftData, close, marketplace}) {
                     }
                     else
                     {
-                        alert('You don`t have enough balance')
+                        dispatch(setPopUpContent({
+                            title: 'Fail',
+                            description: 'You don`t have enough balance to buy an NFT',
+                            cancelText: 'To profile',
+                            okText: 'Continue shopping',
+                            cancelAсtion: () => {
+                                dispatch(closePopUp())
+                                navigate(`/artist-page/${currentUser?._id}`)
+                            },
+                            okAction: () => {
+                              dispatch(closePopUp());
+                              dispatch(setPopUpContent(null));
+                            }
+                          }))
+                        dispatch(openPopUp())
                     }
                 }
             }>Buy</button>
+        </div>
         </div>
     </div>
 }

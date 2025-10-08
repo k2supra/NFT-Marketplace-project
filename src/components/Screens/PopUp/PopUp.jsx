@@ -4,17 +4,23 @@ import { closePopUp } from '../../RTK/userSlice';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function PopUp({title, description, cancelText, okText, cancelAсtion, okAction}) {
+function PopUp() {
     const dispatch = useDispatch()
     const showPopUp = useSelector(state => state.user.showPopUp);
     const location = useLocation()
+    const popUpContent = useSelector(state => state.user.popUpContent);
+
     
-    useEffect(()=>
-    {
+    
+    useEffect(() => {
+        // коли міняється сторінка — закривається попап
         if (showPopUp) {
-            dispatch(closePopUp())
+          dispatch(closePopUp());
         }
-    }, [location.pathname])
+      }, [location.pathname]);
+
+    if (!popUpContent) return null;
+    const { title, description, cancelText, cancelAсtion, okText, okAction } = popUpContent;
 
     return <div className="popUpWindow" style={{display: showPopUp ? null : 'none'}}>
         <div className="popUpContent">

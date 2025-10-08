@@ -55,6 +55,7 @@
 .home .discoverMoreNFTS .frames .NFTCard img.NFTImage
 {
     height: 238px;
+    cursor: pointer;
 }
 
 .home .discoverMoreNFTS .frames .NFTCard .NFTInfo
@@ -74,6 +75,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+    cursor: pointer;
 }
 
 .home .discoverMoreNFTS .frames .NFTCard .NFTInfo .artistInfo h5.NFTName

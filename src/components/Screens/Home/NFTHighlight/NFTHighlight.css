@@ -47,6 +47,7 @@
     border-radius: 20px;
     background-color: var(--secondary-background);
     align-self: flex-start;
+    cursor: pointer;
 }
 
 .home .NFTHighlight .frame .artistCard img.avatar

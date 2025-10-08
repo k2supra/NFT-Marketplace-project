@@ -1,178 +1,36 @@
 import './topRatedArtists.css'
 
-import avatar3 from '../../../../assets/images/avatar3.png';
-import avatar4 from '../../../../assets/images/avatar4.png';
-import avatar5 from '../../../../assets/images/avatar5.png';
-import avatar6 from '../../../../assets/images/avatar6.png';
-import avatar7 from '../../../../assets/images/avatar7.png';
 
 import rocketLaunchPurple from '../../../../assets/images/rocketLaunchPurple.png';
 
+import { useNavigate } from 'react-router-dom'
+
+import { usersMock } from '../../../mocks/users';
+
 function TopRatedArtists() {
+    const navigate = useNavigate()
     return <div className='topRatedArtists'>
         <div className="headline">
             <h4>Top creators</h4>
             <span>Checkout Top Rated Creators on the NFT Marketplace</span>
         </div>
         <ul className="artistCardsRow">
-            <li className='artistCard'>
+            {usersMock.map((u, i)=>
+            <li className='artistCard' key={i} onClick={()=>navigate(`/artist-page/${u._id.$oid}`)}>
                 <div className="avatar">
-                    <img src={avatar3} alt="avatar"/>
+                    <img src={u.avatarUrl} alt="avatar"/>
                     <span className='ratingPosition'></span>
                 </div>
                 <div className="artistInfo">
-                    <h5 className="name">Keepitreal</h5>
+                    <h5 className="name">{u.username}</h5>
                     <div className="additionalInfo">
                         <span className="totalSales">Total Sales:</span>
-                        <span className="spent">34.53 ETH</span>
+                        <span className="spent">{u?.balance?.$numberInt / ((i+1)*10) || 10} ETH</span>
                     </div>
                 </div>
-            </li>
-            <li className='artistCard'>
-                <div className="avatar">
-                    <img src={avatar4} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">DigiLab</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">32.13 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard'>
-                <div className="avatar">
-                    <img src={avatar5} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">GravityOne</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">28.93 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard'>
-                <div className="avatar">
-                    <img src={avatar6} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">Juanie</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">25.30 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard'>
-                <div className="avatar">
-                    <img src={avatar7} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">BlueWhale</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">22.22 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forTablet'>
-                <div className="avatar">
-                    <img src={avatar3} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">Mr Fox</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">22.21 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forDesktop'>
-                <div className="avatar">
-                    <img src={avatar3} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">Keepitreal</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">34.53 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forDesktop'>
-                <div className="avatar">
-                    <img src={avatar4} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">DigiLab</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">32.13 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forDesktop'>
-                <div className="avatar">
-                    <img src={avatar5} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">GravityOne</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">28.93 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forDesktop'>
-                <div className="avatar">
-                    <img src={avatar6} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">Juanie</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">25.30 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forDesktop'>
-                <div className="avatar">
-                    <img src={avatar7} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">BlueWhale</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">22.22 ETH</span>
-                    </div>
-                </div>
-            </li>
-            <li className='artistCard forDesktop'>
-                <div className="avatar">
-                    <img src={avatar3} alt="avatar"/>
-                    <span className='ratingPosition'></span>
-                </div>
-                <div className="artistInfo">
-                    <h5 className="name">Mr Fox</h5>
-                    <div className="additionalInfo">
-                        <span className="totalSales">Total Sales:</span>
-                        <span className="spent">22.21 ETH</span>
-                    </div>
-                </div>
-            </li>
+            </li>)}
         </ul>
-        <button><img src={rocketLaunchPurple} alt="View Rankings" />View Rankings</button>
+        <button onClick={()=>navigate(`/rankings`)}><img src={rocketLaunchPurple} alt="View Rankings" />View Rankings</button>
     </div>
 }
 

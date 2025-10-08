@@ -4,6 +4,7 @@ import Footer from "./Footer/Footer";
 
 import Loading from "./Screens/Loading/Loading";
 import { useSelector } from "react-redux";
+import PopUp from "./Screens/PopUp/PopUp";
 
 function Layout() {
   const loading = useSelector(state => state.user.loading)
@@ -15,6 +16,7 @@ function Layout() {
           <Outlet />
         </main>
         <Footer />
+        <PopUp/>
       </>
     );
   }
