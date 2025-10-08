@@ -64,7 +64,7 @@
     }
 }
 
-.marketplace .heading .inputWrapper img
+.marketplace .heading .inputWrapper img.search
 {
     position: absolute;
     width: 24px;
@@ -90,24 +90,25 @@
     right: 42px;
 }
 
-.marketplace .heading .foundSection
+.marketplace .heading .inputWrapper .foundSection
 {
     position: absolute;
     background-color: var(--secondary-background);
     height: 70px;
     width: 315px;
     padding: 12px;
-    bottom: -30px;
+    bottom: -70px;
     border-radius: 0 0 12px 12px;
     align-content: center;
+    z-index: 100;
 }
 
-.marketplace .heading .foundSection h3.notFound
+.marketplace .heading .inputWrapper .foundSection h3.notFound
 {
     color: var(--captionAndLabelText);
 }
 
-.marketplace .heading .foundSection .artistInfo
+.marketplace .heading .inputWrapper .foundSection .artistInfo
 {
     display: flex;
     align-items: center;
@@ -116,13 +117,13 @@
     height: 100%;
     cursor: pointer;
 }
-.marketplace .heading .foundSection img
+.marketplace .heading .inputWrapper .foundSection img
 {
     height: 100%;
     aspect-ratio: 1;
 }
 
-.marketplace .heading .foundSection .usernameAndID
+.marketplace .heading .inputWrapper .foundSection .usernameAndID
 {
     display: flex;
     flex-direction: column;
@@ -130,11 +131,11 @@
     justify-content: space-around;
     height: 100%;
 }
-.marketplace .heading .foundSection .usernameAndID span.username
+.marketplace .heading .inputWrapper .foundSection .usernameAndID span.username
 {
     font-size: 16px;
 }
-.marketplace .heading .foundSection .usernameAndID span.id
+.marketplace .heading .inputWrapper .foundSection .usernameAndID span.id
 {
     font-size: 12px;
     color: var(--captionAndLabelText);
@@ -180,10 +181,9 @@
         width: 650px;
         padding: 18px 20px;
     }
-    .marketplace .heading .foundSection
+    .marketplace .heading .inputWrapper .foundSection
     {
         width: 650px;
-        bottom: -10px;
     }
 }
 
@@ -207,9 +207,8 @@
     {
         width: 1050px;
     }
-    .marketplace .heading .foundSection
+    .marketplace .heading .inputWrapper .foundSection
     {
         width: 1050px;
-        bottom: 10px;
     }
 }

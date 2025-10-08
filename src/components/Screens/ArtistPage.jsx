@@ -6,9 +6,12 @@ import NFTCardsSection from './ArtistPage/NFTCardsSection/NFTCardsSection'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { fetchFullUser } from '../RTK/fetchFullUser'
 import { fetchBalance } from "../RTK/fetchBalance";
+import { closePopUp, openPopUp, resetError } from "../RTK/userSlice";
+import PopUp from "./PopUp/PopUp";
+import NotFound from "./NotFound/NotFound";
 
 function ArtistPage() {
     const dispatch = useDispatch()
@@ -16,6 +19,7 @@ function ArtistPage() {
     const location = useLocation();
     const { id } = useParams()
     const [activeTab, setActiveTab] = useState('created');
+    const navigate = useNavigate()
 
     const mockUser = location.state?.user;
     useEffect(()=>
@@ -30,8 +34,14 @@ function ArtistPage() {
             dispatch(fetchBalance(currentUser._id))  
         }
     }, [dispatch])
-    const userData = mockUser || fullUser
+
+    const userData = mockUser || fullUser;
+
+    if (error && !loading) {
+        return <NotFound title={'User not found'} description={'You might have entered the wrong id'}/>
+    }
     return <div className="artistPage">
+        {/* {error && !loading && <PopUp title={'nn'} description={'lll'} okText={'ll'} okAction={()=>{dispatch(closePopUp()); navigate('/'); dispatch(resetError())}}/>} */}
         <BannerAndProfilePicture userData={userData}/>
         <ArtistInfo userData={userData} loading={loading} error={error}/>
         <TabBar activeTab={activeTab} setActiveTab={setActiveTab}/>

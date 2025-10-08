@@ -14,6 +14,7 @@
     justify-content: center;
     font-family: 'WorkSans';
     color: white;
+    z-index: 100;
 }
 
 .popUpWindow .popUpContent

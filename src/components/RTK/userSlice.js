@@ -12,9 +12,10 @@ export const userSlice = createSlice(
             fullUser: null,
             balance: 0,
             marketplace: null,
-            loading: false,
+            loading: false, //for the whole page
             error: null,
             showPopUp: false,
+            smallLoading: false, //for sidebar
         },
         reducers:
         {
@@ -35,9 +36,10 @@ export const userSlice = createSlice(
             },
             updateUser:(state, action)=>
             {
-                state.fullUser.username = action.payload.username
-                state.fullUser.bio = action.payload.bio
-                state.fullUser.avatarUrl = action.payload.avatarUrl
+                state.fullUser.username = action.payload.username;
+                state.fullUser.bio = action.payload.bio;
+                state.fullUser.avatarUrl = action.payload.avatarUrl;
+                state.fullUser.bannerUrl = action.payload.bannerUrl;
             },
             setBalance:(state, action)=>
             {
@@ -51,6 +53,10 @@ export const userSlice = createSlice(
             {
                 state.showPopUp = false;
             },
+            resetError: (state) => 
+            {
+                state.error = null;
+            }
         },
         extraReducers:(builder)=>
         {
@@ -73,16 +79,17 @@ export const userSlice = createSlice(
             .addCase(fetchBalance.pending, (state)=>
             {
                 state.error = null;
-                state.loading = true;
+                state.smallLoading = true;
             })
             .addCase(fetchBalance.rejected, (state, action)=>
             {
                 state.error = action.payload?.error || action.error.message;
-                state.loading = false;
+                state.smallLoading = false;
             })
             .addCase(fetchBalance.fulfilled, (state, action)=>
             {
                 state.balance = action.payload;
+                state.smallLoading = false;
             })
             .addCase(fetchMarketplaceForSale.pending, (state)=>
             {
@@ -103,5 +110,5 @@ export const userSlice = createSlice(
     }
 )
 
-export const {setUser, logout, updateNFTS, updateUser, setBalance, openPopUp, closePopUp} = userSlice.actions;
+export const {setUser, logout, updateNFTS, updateUser, setBalance, openPopUp, closePopUp, resetError } = userSlice.actions;
 export default userSlice.reducer

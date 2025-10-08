@@ -7,10 +7,7 @@ export const fetchFullUser = createAsyncThunk(
     'user/fetchFullUser',
     async (userId, {rejectWithValue})=>
     {
-        console.log('|||||||||||||||||||', RENDER_URL);
-        
         try {
-            // const res = await fetch(`${API_URL}:${PORT}/artist-page/${userId}`)
             const res = await fetch(`${RENDER_URL}/artist-page/${userId}`)
             const data = await res.json()
             if(!res.ok) return rejectWithValue(data);

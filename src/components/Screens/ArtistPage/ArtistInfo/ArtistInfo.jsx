@@ -142,6 +142,11 @@ function ArtistInfo({userData, loading, error}) {
                 <img src={instagramLogo} alt="instagram" />
             </div>
         </div>
+        {showLogout && 
+        <div className="balance">
+            Balance: 
+            <h3 className='value'>{userData?.balance} ETH</h3>
+        </div>}
         {showLogout && <div className='controls'>
             <button className='logout' onClick={()=>{dispatch(logout()); navigate('/'); setShowLogout(false)}}>Log out</button>
             <button className='edit' onClick={()=>{setShowEditProfileMW(true)}}>Edit</button>

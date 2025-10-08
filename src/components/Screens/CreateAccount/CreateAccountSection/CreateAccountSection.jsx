@@ -5,9 +5,11 @@ import { useFormik } from 'formik'
 
 import spaceship from '../../../../assets/images/spaceship.png'
 
-import { useDispatch } from 'react-redux';
-import { setUser } from '../../../RTK/userSlice';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, logout, openPopUp, closePopUp } from '../../../RTK/userSlice';
+import { useEffect, useState } from 'react';
+
+import PopUp from '../../PopUp/PopUp';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
@@ -35,9 +37,17 @@ const validate = values =>
 function CreateAccountSection() {
 
     const navigate = useNavigate()
+    const currentUser = useSelector(state=>state.user.currentUser)
 
     const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState(false)
+
+    useEffect(()=>
+    {
+        if (currentUser) {
+            dispatch(openPopUp())
+        }
+    }, [])
 
     const formik = useFormik({
         initialValues: 
@@ -59,9 +69,9 @@ function CreateAccountSection() {
                 const data = await res.json()
 
                 if (res.ok) {
-                console.log('Registered:', data)
+                // console.log('Registered:', data)
                 dispatch(setUser(data))
-                navigate('/')
+                navigate(`/artist-page/${data._id}`)
                 } else {
                 setErrors({ email: data.error || 'Registration failed' })
                 }
@@ -75,6 +85,13 @@ function CreateAccountSection() {
     })
 
     return<div className='createAccountSection'>
+        {currentUser && <PopUp 
+        title={'Hmm...'}
+        description={'It seems that you have been already logged into your account. Do you want to log out?'}
+        cancelText={'No'}
+        okText={'Log out'}
+        cancelAсtion={()=>navigate(`/artist-page/${currentUser._id}`)}
+        okAction={()=>{dispatch(logout()); dispatch(closePopUp());}}/>}
         <img src={spaceship} alt="spaceship" />
         <div className="createAccount">
             <div className="headline">

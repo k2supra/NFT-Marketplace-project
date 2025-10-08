@@ -74,7 +74,26 @@ function Heading() {
                 <option value="user">user</option>
                 <option value="nft">nft</option>
             </select>
-            <img src={searchIcon} alt="search" />
+            <img src={searchIcon} alt="search" className='search'/>
+            {inputIdValue && (
+                !loading && foundUser ? (
+                    <div className='foundSection'>
+                        <div className="artistInfo" onClick={() => navigate(`/artist-page/${foundUser._id}`)}>
+                            <img src={foundUser?.avatarUrl} alt="avatar" />
+                            <div className="usernameAndID">
+                                <span className='username'>{foundUser.username}</span>
+                                <span className='id'>{foundUser._id}</span>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    (
+                    <div className='foundSection'>
+                        <h3 className='notFound'>No user found :⟮</h3>
+                    </div>
+                    )
+                )
+            )}
         </div>
         <div className="mockIDs">
             {usersIDArray.map((u, index)=>
@@ -105,25 +124,7 @@ function Heading() {
             }}>{u.slice(0, 4)}...{u.slice(-3)}</button>
             )}
         </div>
-        {inputIdValue && (
-            !loading && foundUser ? (
-                <div className='foundSection'>
-                    <div className="artistInfo" onClick={() => navigate(`/artist-page/${foundUser._id}`)}>
-                        <img src={foundUser?.avatarUrl} alt="avatar" />
-                        <div className="usernameAndID">
-                            <span className='username'>{foundUser.username}</span>
-                            <span className='id'>{foundUser._id}</span>
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                (
-                    <div className='foundSection'>
-                        <h3 className='notFound'>No user found :⟮</h3>
-                    </div>
-                )
-            )
-        )}
+        
     </div>
 }
 

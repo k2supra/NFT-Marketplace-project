@@ -15,7 +15,7 @@ import { useEffect } from "react";
 
 function Home() {
     const navigate = useNavigate()
-    const currentUser = useSelector(state => state.user.currentUser);
+    const { currentUser } = useSelector(state => state.user);
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -37,11 +37,12 @@ function Home() {
         <NFTHighlight/>
         <HowItWorks/>
         <SubscribeWidget/>
-        <PopUp 
+         <PopUp 
         title={'Welcome'} 
         description={'We have an offer for you. Create an account and get 999 ETH for FREE'}
         cancelText={'Maybe, later'}
         okText={'Let`s go'}
+        cancelAсtion={()=>dispatch(closePopUp())}
         okAction={()=>{navigate('/sign-up'); dispatch(closePopUp())}}/>
     </div>
 }

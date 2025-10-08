@@ -135,6 +135,21 @@
     cursor: pointer;
 }
 
+.artistPage .artistInfoSection .balance
+{
+    width: 100%;
+    text-align: start;
+    line-height: 140%;
+    font-size: 16px;
+    font-family: 'SpaceMono';
+}
+
+.artistPage .artistInfoSection .balance h3
+{
+    display: inline;
+    margin-left: 10px;
+}
+
 .artistPage .artistInfoSection .controls
 {
     display: flex;

@@ -3,11 +3,12 @@ import './loginAccountSection.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik'
 
-import { setUser } from '../../../RTK/userSlice';
-import { useDispatch } from 'react-redux';
+import { setUser, logout, openPopUp, closePopUp } from '../../../RTK/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import PopUp from '../../PopUp/PopUp';
 
 import spaceship from '../../../../assets/images/spaceship.png'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
@@ -29,7 +30,16 @@ const validate = values =>
 function LoginAccountSection() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const currentUser = useSelector(state=>state.user.currentUser)
     const [showPassword, setShowPassword] = useState(false)
+
+
+    useEffect(()=>
+    {
+        if (currentUser) {
+            dispatch(openPopUp())
+        }
+    }, [])
 
     const formik = useFormik({
         initialValues: 
@@ -50,9 +60,9 @@ function LoginAccountSection() {
                 const data = await res.json()
 
                 if (res.ok) {
-                    console.log('Logged in:', data.username)
+                    // console.log('Logged in:', data.username)
                     dispatch(setUser(data))
-                    navigate('/')
+                    navigate(`/artist-page/${data._id}`)
                 } else {
                     setErrors({ loginFailed: data.message || 'Log In failed' })
                 }
@@ -65,6 +75,13 @@ function LoginAccountSection() {
     })
 
     return<div className='loginAccountSection'>
+        {<PopUp 
+        title={'Hmm...'}
+        description={'It seems that you have been already logged into your account. Do you want to log out?'}
+        cancelText={'No'}
+        okText={'Log out'}
+        cancelAсtion={()=>navigate(`/artist-page/${currentUser._id}`)}
+        okAction={()=>{dispatch(logout()); dispatch(closePopUp());}}/>}
         <img src={spaceship} alt="spaceship" />
         <div className="loginAccount">
             <div className="headline">
