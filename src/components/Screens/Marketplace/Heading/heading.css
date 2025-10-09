@@ -182,7 +182,7 @@
     flex-wrap: wrap;
     gap: 20px;
 }
-.marketplace .heading .mockIDs button.mockUserID
+.marketplace .heading .mockIDs button.mockID
 {
     height: 46px;
     width: fit-content;

@@ -144,7 +144,9 @@
 {
     font-size: 16px;
     line-height: 140%;
-    overflow: hidden;
+    overflow: auto;
+    max-width: 14ch;
+    text-align: start;
 }
 
 .topCreators .leadersList ul.list li.leaderItem span.forTabletAndDesktop.change, .topCreators .leadersList ul.list li.leaderItem span.forDesktop.sold
@@ -216,6 +218,7 @@
         font-size: 22px;
         line-height: 140%;
         font-weight: 600;
+        max-width: 20ch;
     }
     .topCreators .leadersList ul.list li.leaderItem span.forTabletAndDesktop.change
     {
@@ -277,6 +280,10 @@
         width: 60px;
         height: 60px;
     }
+    .topCreators .leadersList ul.list li.leaderItem .artist span.name
+    {
+        width: 30ch;
+    }
     .topCreators .leadersList ul.list li.header span.forTabletAndDesktop.change
     {
         width: 160px;
@@ -300,11 +307,7 @@
         line-height: 140%;
         font-family: 'SpaceMono';
     }
-    .topCreators .leadersList ul.list li.header span.volume
-    {
-        width: 160px;
-    }
-    .topCreators .leadersList ul.list li.leaderItem span.volume
+    .topCreators .leadersList ul.list li.header span.volume, .topCreators .leadersList ul.list li.leaderItem span.volume
     {
         width: 160px;
     }

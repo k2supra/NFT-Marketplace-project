@@ -109,7 +109,16 @@ function NFTMW({nftData, close, marketplace}) {
                             }
                             else
                             {
-                                alert('Something went wrong: ');
+                                dispatch(setPopUpContent({
+                                    title: 'Something went wrong',
+                                    description: 'Please, reload the page',
+                                    okText: 'Ok',
+                                    okAction: () => {
+                                      dispatch(closePopUp());
+                                      dispatch(setPopUpContent(null));
+                                    }
+                                  }))
+                                dispatch(openPopUp())
                             }
                         } catch (err) {
                             console.error(err);                            

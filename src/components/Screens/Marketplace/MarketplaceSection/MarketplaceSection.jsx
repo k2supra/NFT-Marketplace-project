@@ -37,7 +37,7 @@ function MarketplaceSection() {
             <label htmlFor="collections" className="tab">Collections</label>
         </div>
         <div className="cardsSection">
-            {marketplaceNftsOrCollections && marketplaceNftsOrCollections.length>0 ? marketplaceNftsOrCollections.map((nft,index)=>
+            {marketplaceNftsOrCollections && marketplaceNftsOrCollections.length>0 ? [...marketplaceNftsOrCollections].reverse().map((nft,index)=>
             <div className="NFTCard" key={index} onClick={()=>
             {
                 setShowNFTMW(true);

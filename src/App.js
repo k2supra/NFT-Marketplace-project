@@ -14,11 +14,13 @@ import LoginAccount from './components/Screens/LoginAccount';
 import FollowersPage from './components/Screens/ArtistPage/FollowersPages/FollowersPage';
 import FollowingsPage from './components/Screens/ArtistPage/FollowersPages/FollowingsPage';
 import NotFound from './components/Screens/NotFound/NotFound';
+import ScrollToTop from './components/Screens/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
     <Router>
       <div className='App'>
+        <ScrollToTop/>
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route index element={<Home/>}/>

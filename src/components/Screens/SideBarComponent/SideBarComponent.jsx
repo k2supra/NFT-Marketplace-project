@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSelector } from 'react-redux'
 import './sideBarComponent.css'
 
@@ -23,7 +24,7 @@ function SideBarComponent({close}) {
         {!currentUser ? <Link to='/sign-up'>Sign Up</Link>:<Link to={`/artist-page/${currentUser._id}`}>Profile</Link>}
         {currentUser ? <Link to={`/artist-page/${currentUser?._id}/followers`}>Followers</Link>:null}
         {currentUser ? <Link to={`/artist-page/${currentUser?._id}/followings`}>Followings</Link>:null}
-        {currentUser && <span className='balance'>Balance: {smallLoading ? 'Updating...' : balance + ' ETH'}{/*  {balance} ETH */}</span>}
+        {currentUser && <span className='balance'>Balance: {smallLoading ? 'Updating...' : balance + ' ETH'}</span>}
     </div>
 }
 
