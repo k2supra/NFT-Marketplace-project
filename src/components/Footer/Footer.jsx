@@ -9,8 +9,13 @@ import mailLogo from '../../assets/images/mailLogo.png'
 import { ReactComponent as TelegramLogo } from '../../assets/images/telegramLogoSVG.svg'
 import { ReactComponent as GmailLogo } from '../../assets/images/gmailLogoSVG.svg'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { closePopUp, openPopUp, setPopUpContent } from '../RTK/userSlice'
 
 function Footer() {
+    const [inputValue, setInputValue] = useState('');
+    const dispatch = useDispatch()
     return <footer>
         <div className="info">
             <div className="marketplaceInfo">
@@ -42,8 +47,34 @@ function Footer() {
                 <div className="formAndInfo">
                     Get exclusive promotions & updates straight to your inbox.
                     <div className="inputAndButton">
-                        <input type="text" placeholder='Enter Your Email Address'/>
-                        <button><img src={mailLogo} alt="Subscribe" />Subscribe</button>
+                        <input type="text" value={inputValue} placeholder='Enter Your Email Address' onChange={(e)=>setInputValue(e.target.value)}/>
+                        <button onClick={()=>{
+                        if (!inputValue.trim() || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(inputValue)) {
+                            dispatch(setPopUpContent({
+                                title: 'Fail',
+                                description: 'Please, enter your email',
+                                okText: 'Ok',
+                                okAction: () => {
+                                  dispatch(closePopUp());
+                                  dispatch(setPopUpContent(null));
+                                }
+                              }))
+                        }
+                        else
+                        {
+                            dispatch(setPopUpContent({
+                                title: 'SUCCESSFUL',
+                                description: 'Thank you for subscribing',
+                                okText: ':)',
+                                okAction: () => {
+                                  dispatch(closePopUp());
+                                  dispatch(setPopUpContent(null));
+                                }
+                              }))
+                        }
+                        
+                        dispatch(openPopUp())
+                    }}><img src={mailLogo} alt="Subscribe" />Subscribe</button>
                     </div>
                 </div>
             </div>
