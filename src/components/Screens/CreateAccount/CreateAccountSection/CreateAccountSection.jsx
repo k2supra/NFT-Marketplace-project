@@ -6,7 +6,7 @@ import { useFormik } from 'formik'
 import spaceship from '../../../../assets/images/spaceship.png'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, logout, openPopUp, closePopUp } from '../../../RTK/userSlice';
+import { setUser, logout, openPopUp, closePopUp, setPopUpContent } from '../../../RTK/userSlice';
 import { useEffect, useState } from 'react';
 
 import PopUp from '../../PopUp/PopUp';
@@ -43,11 +43,19 @@ function CreateAccountSection() {
     const [showPassword, setShowPassword] = useState(false)
 
     useEffect(()=>
-    {
-        if (currentUser) {
-            dispatch(openPopUp())
-        }
-    }, [])
+        {
+            if (currentUser) {
+                dispatch(setPopUpContent({
+                    title:'Hmm...',
+                description:'It seems that you have been already logged into your account. Do you want to log out?',
+                cancelText:'No',
+                okText:'Log out',
+                cancelAсtion:()=>navigate(`/artist-page/${currentUser._id}`),
+                okAction:()=>{dispatch(logout()); dispatch(closePopUp());},
+                }))
+                dispatch(openPopUp())
+            }
+        }, [])
 
     const formik = useFormik({
         initialValues: 
@@ -85,13 +93,7 @@ function CreateAccountSection() {
     })
 
     return<div className='createAccountSection'>
-        {currentUser && <PopUp 
-        title={'Hmm...'}
-        description={'It seems that you have been already logged into your account. Do you want to log out?'}
-        cancelText={'No'}
-        okText={'Log out'}
-        cancelAсtion={()=>navigate(`/artist-page/${currentUser._id}`)}
-        okAction={()=>{dispatch(logout()); dispatch(closePopUp());}}/>}
+        {currentUser && <PopUp/>}
         <img src={spaceship} alt="spaceship" />
         <div className="createAccount">
             <div className="headline">

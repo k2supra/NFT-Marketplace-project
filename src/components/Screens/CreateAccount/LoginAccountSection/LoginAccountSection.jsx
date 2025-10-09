@@ -3,7 +3,7 @@ import './loginAccountSection.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik'
 
-import { setUser, logout, openPopUp, closePopUp } from '../../../RTK/userSlice';
+import { setUser, logout, openPopUp, closePopUp, setPopUpContent } from '../../../RTK/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import PopUp from '../../PopUp/PopUp';
 
@@ -37,6 +37,14 @@ function LoginAccountSection() {
     useEffect(()=>
     {
         if (currentUser) {
+            dispatch(setPopUpContent({
+                title:'Hmm...',
+            description:'It seems that you have been already logged into your account. Do you want to log out?',
+            cancelText:'No',
+            okText:'Log out',
+            cancelAсtion:()=>navigate(`/artist-page/${currentUser._id}`),
+            okAction:()=>{dispatch(logout()); dispatch(closePopUp());},
+            }))
             dispatch(openPopUp())
         }
     }, [])
@@ -75,13 +83,7 @@ function LoginAccountSection() {
     })
 
     return<div className='loginAccountSection'>
-        {<PopUp 
-        title={'Hmm...'}
-        description={'It seems that you have been already logged into your account. Do you want to log out?'}
-        cancelText={'No'}
-        okText={'Log out'}
-        cancelAсtion={()=>navigate(`/artist-page/${currentUser._id}`)}
-        okAction={()=>{dispatch(logout()); dispatch(closePopUp());}}/>}
+        {<PopUp/>}
         <img src={spaceship} alt="spaceship" />
         <div className="loginAccount">
             <div className="headline">
