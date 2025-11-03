@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchMarketplaceForSale } from '../../../RTK/fetchMarketplaceForSale'
-import NFTMW from './NFTMW/NFTMW'
+import NFTMW from '../../NFTMW/NFTMW'
 import { useNavigate } from 'react-router-dom'
 
 

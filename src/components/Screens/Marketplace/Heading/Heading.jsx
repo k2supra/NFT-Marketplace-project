@@ -5,7 +5,7 @@ import searchIcon from '../../../../assets/images/searchIcon.png'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import NFTMW from '../MarketplaceSection/NFTMW/NFTMW';
+import NFTMW from '../../NFTMW/NFTMW';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;

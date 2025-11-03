@@ -5,11 +5,14 @@ import { updateNFTS } from '../../../RTK/userSlice'
 
 import AddCardMW from './AddCardMW/AddCardMW'
 import { useDispatch, useSelector } from 'react-redux'
+import NFTMW from '../../NFTMW/NFTMW'
 
 function NFTCardsSection({userData, activeTab}) {
     const [showAddCardMW, setShowAddCardMW] = useState(false)
     const dispatch = useDispatch()
     const currentUser = useSelector(state=>state.user.currentUser)
+    const [showNFTMW, setShowNFTMW] = useState(false);
+    const [nftData, setNftData] = useState(null);
     
     let nftsData = [];
 
@@ -20,7 +23,12 @@ function NFTCardsSection({userData, activeTab}) {
     return <div className="NFTCardSection">
         <div className="frames">
             {nftsData.length === 0 ? <h1>No NFTs {activeTab}</h1> : [...nftsData].reverse().map((nft, index)=>
-            <div className="NFTCard" key={index}>
+            <div className="NFTCard" key={index} onClick={()=>
+            {
+                setShowNFTMW(true);
+                setNftData({imageUrl: nft?.imageUrl, title: nft?.title, price: nft?.price, highestBid: nft?.highestBid, _id: nft?._id});                
+            }
+            }>
                 <img src={nft.imageUrl} alt="NFT" className='NFTImage'/>
                 <div className="NFTInfo">
                     <div className="artistInfo">
@@ -53,6 +61,14 @@ function NFTCardsSection({userData, activeTab}) {
                 dispatch(updateNFTS(newNFT))
                 setShowAddCardMW(false)
             }}/>}
+            {showNFTMW && <NFTMW nftData={nftData} 
+            close={()=>
+            {
+                setShowNFTMW(false);
+                setNftData(null);
+            }} 
+            marketplace={userData}
+            isForSale={true}/>}
         </div>
     </div>
 }

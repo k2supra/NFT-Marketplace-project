@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 import './nftmw.css'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBalance } from '../../../../RTK/fetchBalance';
-import { fetchMarketplaceForSale } from '../../../../RTK/fetchMarketplaceForSale';
+import { fetchBalance } from '../../RTK/fetchBalance';
+import { fetchMarketplaceForSale } from '../../RTK/fetchMarketplaceForSale';
 import { useNavigate } from 'react-router-dom';
-import { closePopUp, openPopUp, setPopUpContent } from '../../../../RTK/userSlice';
-import PopUp from '../../../PopUp/PopUp';
+import { closePopUp, openPopUp, setPopUpContent } from '../../RTK/userSlice';
+import PopUp from '../PopUp/PopUp';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_PORT;
 const RENDER_URL = process.env.REACT_APP_RENDER_URL;
 
-function NFTMW({nftData, close, marketplace}) {
+function NFTMW({nftData, close, marketplace, isForSale = false}) {
     const dispatch = useDispatch();
     const currentUser = useSelector(state=>state.user.currentUser)
     const navigate = useNavigate()
@@ -72,7 +72,7 @@ function NFTMW({nftData, close, marketplace}) {
                 </div>
             </div>
         <div className="controls">
-            <button onClick={close}>⨉</button>
+            <button onClick={close}>Cancel</button>
             <button onClick={async ()=>
                 {
                     if(!currentUser) 
@@ -148,7 +148,7 @@ function NFTMW({nftData, close, marketplace}) {
                         dispatch(openPopUp())
                     }
                 }
-            }>Buy</button>
+            }>{isForSale ? 'Sell' : 'Buy'}{/* Buy */}</button>
         </div>
         </div>
     </div>

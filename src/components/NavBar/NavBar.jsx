@@ -2,16 +2,23 @@ import './navBar.css'
 
 import userLogo from '../../assets/images/userLogo.png'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import SideBar from '../Screens/SideBar'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useSelector } from 'react-redux';
 
 function NavBar() {
     const [sideBarOpen, setSideBarOpen] = useState(false);
     const currentUser = useSelector(state => state.user.currentUser)
+    const location = useLocation()
+    useEffect(()=>
+    {
+        if (sideBarOpen) {
+            setSideBarOpen(false)
+        }
+    }, [location])
     return (
     <nav>
         <Link to='/'><div className="logo"></div></Link>
