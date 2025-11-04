@@ -75,78 +75,81 @@ function NFTMW({nftData, close, marketplace, isForSale = false}) {
             <button onClick={close}>Cancel</button>
             <button onClick={async ()=>
                 {
-                    if(!currentUser) 
-                        {
-                            return navigate(`/sign-up`);
-                        }
-                    const freshBalance = await dispatch(fetchBalance(currentUser._id)).unwrap();
-                    if(+freshBalance >= +nftData.price)
-                    {
-                        try {
-                            console.log("start fetch...");
-                            const res = await fetch(`${RENDER_URL}/buy/${marketplace._id}/${currentUser._id}/${nftData._id}`, {
-                                method: 'POST',
-                                headers: {'Content-Type': 'application/json'},
-                            })
-                            console.log("got response:", res.status);
-
-                            if (res.ok) {
-                                dispatch(setPopUpContent({
-                                    title: 'Congratulation',
-                                    description: 'You have successfully bought an NFT',
-                                    cancelText: 'To profile',
-                                    okText: 'Continue shopping',
-                                    cancelAсtion: () => {
-                                        dispatch(closePopUp())
-                                        navigate(`/artist-page/${currentUser?._id}`)
-                                    },
-                                    okAction: () => {
-                                      dispatch(closePopUp());
-                                      dispatch(setPopUpContent(null));
-                                    }
-                                  }))
-                                dispatch(openPopUp())
-                            }
-                            else
+                    if (!isForSale) {
+                        if(!currentUser) 
                             {
-                                dispatch(setPopUpContent({
-                                    title: 'Something went wrong',
-                                    description: 'Please, reload the page',
-                                    okText: 'Ok',
-                                    okAction: () => {
-                                      dispatch(closePopUp());
-                                      dispatch(setPopUpContent(null));
-                                    }
-                                  }))
-                                dispatch(openPopUp())
+                                return navigate(`/sign-up`);
                             }
-                        } catch (err) {
-                            console.error(err);                            
-                        }
-                        finally
+                        const freshBalance = await dispatch(fetchBalance(currentUser._id)).unwrap();
+                        if(+freshBalance >= +nftData.price)
                         {
-                            close();
-                            dispatch(fetchMarketplaceForSale());
+                            try {
+                                console.log("start fetch...");
+                                const res = await fetch(`${RENDER_URL}/buy/${marketplace._id}/${currentUser._id}/${nftData._id}`, {
+                                    method: 'POST',
+                                    headers: {'Content-Type': 'application/json'},
+                                })
+                                console.log("got response:", res.status);
+    
+                                if (res.ok) {
+                                    dispatch(setPopUpContent({
+                                        title: 'Congratulation',
+                                        description: 'You have successfully bought an NFT',
+                                        cancelText: 'To profile',
+                                        okText: 'Continue shopping',
+                                        cancelAсtion: () => {
+                                            dispatch(closePopUp())
+                                            navigate(`/artist-page/${currentUser?._id}`)
+                                        },
+                                        okAction: () => {
+                                          dispatch(closePopUp());
+                                          dispatch(setPopUpContent(null));
+                                        }
+                                      }))
+                                    dispatch(openPopUp())
+                                }
+                                else
+                                {
+                                    dispatch(setPopUpContent({
+                                        title: 'Something went wrong',
+                                        description: 'Please, reload the page',
+                                        okText: 'Ok',
+                                        okAction: () => {
+                                          dispatch(closePopUp());
+                                          dispatch(setPopUpContent(null));
+                                        }
+                                      }))
+                                    dispatch(openPopUp())
+                                }
+                            } catch (err) {
+                                console.error(err);                            
+                            }
+                            finally
+                            {
+                                close();
+                                dispatch(fetchMarketplaceForSale());
+                            }
+                        }
+                        else
+                        {
+                            dispatch(setPopUpContent({
+                                title: 'Fail',
+                                description: 'You don`t have enough balance to buy an NFT',
+                                cancelText: 'To profile',
+                                okText: 'Continue shopping',
+                                cancelAсtion: () => {
+                                    dispatch(closePopUp())
+                                    navigate(`/artist-page/${currentUser?._id}`)
+                                },
+                                okAction: () => {
+                                  dispatch(closePopUp());
+                                  dispatch(setPopUpContent(null));
+                                }
+                              }))
+                            dispatch(openPopUp())
                         }
                     }
-                    else
-                    {
-                        dispatch(setPopUpContent({
-                            title: 'Fail',
-                            description: 'You don`t have enough balance to buy an NFT',
-                            cancelText: 'To profile',
-                            okText: 'Continue shopping',
-                            cancelAсtion: () => {
-                                dispatch(closePopUp())
-                                navigate(`/artist-page/${currentUser?._id}`)
-                            },
-                            okAction: () => {
-                              dispatch(closePopUp());
-                              dispatch(setPopUpContent(null));
-                            }
-                          }))
-                        dispatch(openPopUp())
-                    }
+                    
                 }
             }>{isForSale ? 'Sell' : 'Buy'}{/* Buy */}</button>
         </div>
