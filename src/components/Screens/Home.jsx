@@ -42,10 +42,10 @@ function Home() {
       }, [dispatch, currentUser]);
     useEffect(()=>
     {
-      if(!marketplace)
-      {
-        dispatch(fetchMarketplaceForSale())
-      }
+      // if(!marketplace)
+      // {
+      //   dispatch(fetchMarketplaceForSale())
+      // }
     }, [dispatch])
 
     return<div className="home">

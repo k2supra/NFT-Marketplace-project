@@ -51,11 +51,11 @@ function DiscoverMoreNFTS() {
             <div className="NFTCard">
                 <img src={nft2} alt="NFT" className='NFTImage' onClick={()=>navigate(`/marketplace`)}/>
                 <div className="NFTInfo">
-                    <div className="artistInfo" onClick={()=>navigate(`/artist-page/68de6f88b19bde40d5fab4d1`)}>
+                    <div className="artistInfo" onClick={()=>navigate(`/artist-page/${usersMock[2]._id.$oid}`)}>
                         <h5 className='NFTName'>Life on Edena</h5>
                         <div className="artist">
-                            <img src={marketplace?.avatarUrl} alt="avatar" />
-                            <span className="name">{marketplace?.username}</span>
+                            <img src={usersMock[2]?.avatarUrl} alt="avatar" />
+                            <span className="name">{usersMock[2]?.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
@@ -75,9 +75,9 @@ function DiscoverMoreNFTS() {
                 <div className="NFTInfo">
                     <div className="artistInfo">
                         <h5 className='NFTName'>AstroFiction</h5>
-                        <div className="artist" onClick={()=>navigate(`/artist-page/68de6f88b19bde40d5fab4d1`)}>
-                            <img src={marketplace?.avatarUrl} alt="avatar" />
-                            <span className="name">{marketplace?.username}</span>
+                        <div className="artist" onClick={()=>navigate(`/artist-page/${usersMock[1]._id.$oid}`)}>
+                            <img src={usersMock[1]?.avatarUrl} alt="avatar" />
+                            <span className="name">{usersMock[1]?.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
