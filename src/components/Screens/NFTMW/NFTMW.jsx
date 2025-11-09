@@ -149,7 +149,34 @@ function NFTMW({nftData, close, marketplace, isForSale = false}) {
                             dispatch(openPopUp())
                         }
                     }
-                    
+                    else
+                    {
+                        try {
+                            const res = await fetch(`${RENDER_URL}/sell/${currentUser._id}/${nftData._id}`, {
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                            })
+                            if (res.ok) {
+                                dispatch(fetchMarketplaceForSale());
+                                dispatch(setPopUpContent({
+                                  title: 'Success',
+                                  description: 'NFT added to marketplace!',
+                                  okText: 'Ok',
+                                  okAction: () => {
+                                    dispatch(closePopUp());
+                                    dispatch(setPopUpContent(null));
+                                  }
+                                }));
+                                dispatch(openPopUp());
+                            } else {
+                                const err = await res.json();
+                                console.error(err);
+                            }
+                        } catch (err) {
+                            console.error(err);  
+                        }
+                    }
+                    close();
                 }
             }>{isForSale ? 'Sell' : 'Buy'}{/* Buy */}</button>
         </div>
