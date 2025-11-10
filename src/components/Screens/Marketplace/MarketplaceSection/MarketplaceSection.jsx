@@ -48,8 +48,8 @@ function MarketplaceSection() {
                     <div className="artistInfo">
                         <h5 className='NFTName'>{nft?.title}</h5>
                         <div className="artist" onClick={()=>navigate(`/artist-page/${marketplace?._id}`)}>
-                            <img src={marketplace?.avatarUrl} alt="avatar" />
-                            <span className="name">{marketplace.username}</span>
+                            <img src={nft?.createdBy?.avatarUrl || marketplace?.avatarUrl} alt="avatar" />
+                            <span className="name">{nft?.createdBy?.username || marketplace.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
