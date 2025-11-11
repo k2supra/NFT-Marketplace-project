@@ -23,7 +23,7 @@ function NFTMW({nftData, close, marketplace, isForSale = false}) {
     },[])
     return <div className="nftmw">
         <div className="content">
-        <div className="NFTCard">
+            <div className="NFTCard">
                 <img src={nftData?.imageUrl} alt="NFT" className='NFTImage'/>
                 <div className="NFTInfo">
                     <div className="artistInfo">
@@ -54,9 +54,9 @@ function NFTMW({nftData, close, marketplace, isForSale = false}) {
                                 alert("Не вдалося скопіювати ❌");
                                 }
                         }}>{nftData?._id.toString()}</span>
-                        <div className="artist" onClick={()=>navigate(`/artist-page/${marketplace?._id}`)}>
-                            <img src={marketplace?.avatarUrl} alt="avatar" />
-                            <span className="name">{marketplace.username}</span>
+                        <div className="artist" onClick={()=>navigate(`/artist-page/${nftData?.createdBy?._id}`)}>
+                            <img src={nftData?.createdBy?.avatarUrl || marketplace.avatarUrl} alt="avatar" />
+                            <span className="name">{nftData?.createdBy?.username || marketplace.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
@@ -84,12 +84,10 @@ function NFTMW({nftData, close, marketplace, isForSale = false}) {
                         if(+freshBalance >= +nftData.price)
                         {
                             try {
-                                console.log("start fetch...");
                                 const res = await fetch(`${RENDER_URL}/buy/${marketplace._id}/${currentUser._id}/${nftData._id}`, {
                                     method: 'POST',
                                     headers: {'Content-Type': 'application/json'},
                                 })
-                                console.log("got response:", res.status);
     
                                 if (res.ok) {
                                     dispatch(setPopUpContent({

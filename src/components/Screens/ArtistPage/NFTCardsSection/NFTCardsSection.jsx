@@ -34,8 +34,8 @@ function NFTCardsSection({userData, activeTab}) {
                     <div className="artistInfo">
                         <h5 className='NFTName'>{nft.title}</h5>
                         <div className="artist">
-                            <img src={userData?.avatarUrl} alt="avatar" />
-                            <span className="name">{userData?.username}</span>
+                            <img src={nft?.createdBy?.avatarUrl || userData?.avatarUrl} alt="avatar" />
+                            <span className="name">{nft?.createdBy?.username || userData?.username}</span>
                         </div>
                     </div>
                     <div className="additionalInfo">
