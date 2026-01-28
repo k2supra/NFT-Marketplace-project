@@ -28,7 +28,7 @@ function Footer() {
                             <a href="mailto:andrijkorolevic@gmail.com"><GmailLogo className='icon'/></a>
                             <a href=""><img src={youtubeLogo} alt="youtube" className='icon'/></a>
                             <a href=""><img src={twitterLogo} alt="twitter" className='icon'/></a>
-                            <a href="https://www.instagram.com/andy_like0_0?igsh=MXh0MTQ2bWFoaGRsaw=="><img src={instagramLogo} alt="instagram" className='icon'/></a>
+                            <a href=""><img src={instagramLogo} alt="instagram" className='icon'/></a>
                             <a href="https://t.me/Andruha_usd"><TelegramLogo className='icon'/></a>
                         </div>
                     </div>
